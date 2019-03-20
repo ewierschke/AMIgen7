@@ -34,7 +34,7 @@ function PrepChroot() {
                      echo "$(rpm --qf '%{name}\n' -qf \
                             /etc/yum.repos.d/* 2>&1 | \
                             grep -v "not owned" | sort -u)" ; \
-                     echo yum-utils
+                     echo yum-utils coreutils elfutils-libelf
                    ))
 
    # Enable DNS resolution in the chroot
@@ -66,7 +66,7 @@ function PrepChroot() {
    yum --disablerepo="*" --enablerepo="${BONUSREPO}" \
       --installroot="${CHROOT}" -y reinstall "${REPOPKGS[@]}"
    yum --disablerepo="*" --enablerepo="${BONUSREPO}" \
-      --installroot="${CHROOT}" -y install yum-utils coreutils elfutils-libelf
+      --installroot="${CHROOT}" -y install yum-utils
 
    # if alt-repo defined, disable everything, then install alt-repos
    if [[ ! -z ${REPORPMS+xxx} ]]
