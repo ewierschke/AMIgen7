@@ -34,7 +34,7 @@ function PrepChroot() {
                      echo "$(rpm --qf '%{name}\n' -qf \
                             /etc/yum.repos.d/* 2>&1 | \
                             grep -v "not owned" | sort -u)" ; \
-                     echo yum-utils 
+                     echo yum-utils
                    ))
 
    # Enable DNS resolution in the chroot
@@ -156,8 +156,8 @@ fi
 chroot "$CHROOT" "${YCM}" --disable "*"
 chroot "$CHROOT" "${YCM}" --enable "${BONUSREPO}"
 
-# symlink run to var/run
 # ADDED FOR AZURE
+# copy everything from /var/run to /run, remove /var/run and symlink /run to /var/run
 if [[ $(rpm --quiet -q redhat-release-server)$? -eq 0 ]]
 then
     /bin/cp -rp "${CHROOT}"/var/run/* "${CHROOT}"/run && /bin/rm -rf "${CHROOT}"/var/run/* && /bin/rm -rf "${CHROOT}"/var/run
