@@ -38,7 +38,8 @@ function CarveLVM() {
    local ROOTVOL=(rootVol 4g)
    local SWAPVOL=(swapVol 2g)
    local HOMEVOL=(homeVol 1g)
-   local VARVOL=(varVol 2g)
+   #Azure places extension content in var
+   local VARVOL=(varVol 4g)
    local LOGVOL=(logVol 2g)
    local AUDVOL=(auditVol 100%FREE)
 

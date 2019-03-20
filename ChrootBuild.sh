@@ -66,7 +66,7 @@ function PrepChroot() {
    yum --disablerepo="*" --enablerepo="${BONUSREPO}" \
       --installroot="${CHROOT}" -y reinstall "${REPOPKGS[@]}"
    yum --disablerepo="*" --enablerepo="${BONUSREPO}" \
-      --installroot="${CHROOT}" -y install yum-utils
+      --installroot="${CHROOT}" -y install yum-utils coreutils elfutils-libelf
 
    # if alt-repo defined, disable everything, then install alt-repos
    if [[ ! -z ${REPORPMS+xxx} ]]
