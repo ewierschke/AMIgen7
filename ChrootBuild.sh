@@ -157,11 +157,11 @@ chroot "$CHROOT" "${YCM}" --disable "*"
 chroot "$CHROOT" "${YCM}" --enable "${BONUSREPO}"
 
 # symlink run to var/run
-if [[ $(rpm --quiet -q redhat-release-server)$? -eq 0 ]]
-then
-    /bin/cp -rp "${CHROOT}"/var/run/* "${CHROOT}"/run && /bin/rm -rf "${CHROOT}"/var/run/* && /bin/rm -rf "${CHROOT}"/var/run
-    chroot "${CHROOT}" /bin/ln -s /run/ /var
-fi
+#if [[ $(rpm --quiet -q redhat-release-server)$? -eq 0 ]]
+#then
+#    /bin/cp -rp "${CHROOT}"/var/run/* "${CHROOT}"/run && /bin/rm -rf "${CHROOT}"/var/run/* && /bin/rm -rf "${CHROOT}"/var/run
+#    chroot "${CHROOT}" /bin/ln -s /run/ /var
+#fi
 
 # Whether to include FIPS kernel modules...
 case "${FIPSDISABLE}" in
